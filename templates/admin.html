@@ -1,0 +1,42 @@
+<!-- admin.html -->
+{% extends 'base.html' %}
+<title>Admin</title>
+
+{% block content %}
+<div class="wrapper">
+  
+  <table class="admin">      
+    <tr>
+      <th>Nome</th>
+      <th>Semestre</th>
+      <th>Descrição</th>
+      <th>Total</th>
+    </tr>
+    {% for pedido in pedidos %}
+    <tr>
+      <td>{{ pedido.nome }}</td>
+      <td>{{ pedido.semestre }}</td>
+      <td>{% for item in pedido[3] | from_json %}
+            {{ item.salgado }} {{ item.quantidade }} 
+            {% if not loop.last %}, {% endif %}
+          {% endfor %}
+      </td>
+      <td>R${{ pedido.total }},00</td>
+    </tr>
+    {% endfor %}
+
+    <td>
+      <button class="btn btn-success" onclick="showAlert()" type="submit">Enviar</button> 
+    </td>
+    <td>
+      <button onclick="window.location.href='{{ url_for('login') }}'" class="btn btn-danger" href="/" type="submit">Sair</button> 
+    </td>
+  </table>
+  
+</div>
+  <script>
+    function showAlert() {
+      alert('Pedidos enviados com sucesso!');
+    }
+  </script>
+{% endblock %}

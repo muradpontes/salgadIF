@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+<title>Pedido</title>
+
+{% block content %}
+<div class="wrapper">
+    <form class="form-pedido" method="POST" action="/pedido">       
+      <h4 class="form-pedido-heading">Monte seu Pedido</h4>
+      <div>
+        <label for="coxinha">Coxinha</label>
+        <input type="number" id="coxinha" name="coxinha" class="quantidade" min="0" value="0">
+        R$<span id="coxinha-preco">0</span>
+    </div>
+    <div>
+        <label for="pastel_carne">Pastel de Carne</label>
+        <input type="number" id="pastel_carne" name="pastel_carne" class="quantidade" min="0" value="0">
+        R$<span id="pastel_carne-preco">0</span>
+    </div>
+    <div>
+        <label for="pastel_frango">Pastel de Frango</label>
+        <input type="number" id="pastel_frango" name="pastel_frango" class="quantidade" min="0" value="0">
+        R$<span id="pastel_frango-preco">0</span>
+    </div>
+    <div>
+        <label for="pastel_queijo">Pastel de Queijo</label>
+        <input type="number" id="pastel_queijo" name="pastel_queijo" class="quantidade" min="0" value="0">
+        R$<span id="pastel_queijo-preco">0</span>
+    </div>
+    <div>
+        <label for="enroladinho">Enroladinho</label>
+        <input type="number" id="enroladinho" name="enroladinho" class="quantidade" min="0" value="0">
+        R$<span id="enroladinho-preco">0</span>
+    </div>
+
+    <div class="total">
+        <label>Total:</label>
+        R$<span id="preco-total">0</span>
+    </div>
+        
+      <button onclick="showAlert()" class="btn btn-success" type="submit">Fazer Pedido</button>   
+      <a class="btn btn-danger" href="/">Voltar</a>
+
+  <script>
+    function showAlert() {
+      alert('Pedido feito com sucesso!');
+    }
+  </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ url_for('static', filename='calculaPreco.js') }}"></script>
+
+    </form>
+</div>
+{% endblock %}
