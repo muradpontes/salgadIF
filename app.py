@@ -3,7 +3,7 @@ import sqlite3
 from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
-app.secret_key = '10d5a0555a83f8bb41290c1e14e603e3' #frango MD5 hash
+app.secret_key = '10d5a0555a83f8bb41290c1e14e603e3' # frango MD5 hash
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 
 def from_json(value):
